@@ -1,0 +1,62 @@
+/*
+ * Drift: Clearview settings screen.
+ * Accent: orange #f97316 for the mark; #c2410c for text, focus and buttons (AA on white).
+ */
+
+.drift-clearview {
+	--drift-clearview-accent: #f97316;
+	--drift-clearview-accent-strong: #c2410c;
+	--drift-clearview-border: #dcdcde;
+	max-width: 960px;
+}
+
+.drift-clearview__title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.drift-clearview__mark {
+	display: inline-flex;
+	color: var(--drift-clearview-accent);
+}
+
+.drift-clearview__card {
+	margin-top: 16px;
+	padding: 4px 20px 12px;
+	background: #fff;
+	border: 1px solid var(--drift-clearview-border);
+	border-radius: 8px;
+}
+
+.drift-clearview__intro {
+	margin: 16px 0 0;
+	padding-left: 12px;
+	border-left: 3px solid var(--drift-clearview-accent);
+}
+
+.drift-clearview .form-table th {
+	width: 160px;
+}
+
+.drift-clearview__radio {
+	display: inline-block;
+	margin: 0 16px 6px 0;
+}
+
+.drift-clearview .button-primary {
+	background: var(--drift-clearview-accent-strong);
+	border-color: var(--drift-clearview-accent-strong);
+}
+
+.drift-clearview .button-primary:hover,
+.drift-clearview .button-primary:focus {
+	background: #9a3412;
+	border-color: #9a3412;
+}
+
+@media (max-width: 782px) {
+	.drift-clearview__card {
+		padding: 4px 12px 12px;
+	}
+}

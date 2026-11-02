@@ -1,0 +1,73 @@
+/*
+ * Drift: Clearview front-end icon links. Loaded only for users who see them.
+ * Corner position and hover colour are added as inline CSS from the settings.
+ * Selectors are ID-scoped and sizes forced so theme resets can't collapse
+ * the icons.
+ */
+
+#drift-clearview {
+	position: fixed;
+	z-index: 99999;
+	display: flex;
+	gap: 8px;
+	padding: 8px;
+	line-height: 1;
+}
+
+#drift-clearview,
+#drift-clearview * {
+	box-sizing: border-box;
+}
+
+#drift-clearview .drift-clearview__link {
+	display: flex;
+	flex: none;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	border-radius: 3px;
+	background: #1d2327;
+	color: #fff;
+	text-decoration: none;
+}
+
+#drift-clearview .drift-clearview__link:hover,
+#drift-clearview .drift-clearview__link:focus {
+	background: #c2410c;
+	color: #fff;
+}
+
+#drift-clearview .drift-clearview__link:focus-visible {
+	outline: 2px solid #fff;
+	outline-offset: -4px;
+}
+
+#drift-clearview .drift-clearview__link svg {
+	display: block;
+	flex: none;
+	width: 18px !important;
+	height: 18px !important;
+	max-width: none;
+	fill: none;
+	stroke: currentColor;
+}
+
+/* Visually hidden, without relying on the theme to define .screen-reader-text. */
+#drift-clearview .drift-clearview__label {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	margin: -1px !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	border: 0 !important;
+}
+
+@media print {
+	#drift-clearview {
+		display: none;
+	}
+}
