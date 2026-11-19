@@ -2,7 +2,7 @@
 
 # Drift: Clearview
 
-Free WordPress plugin by **Drift Creative Systems**. Hides the admin toolbar on the front end for logged-in editors and puts two small icon links in a corner instead: **WP Dashboard** and **Edit Page**.
+Free WordPress plugin by **Drift Creative Systems**. Hides the admin toolbar on the front end for logged-in editors and puts small icon links in a corner instead: **WP Dashboard** and **Edit Page** by default, plus optional built-ins and custom links.
 
 - WordPress.org slug: `drift-clearview` (submission pending)
 - Licence: GPL-2.0-or-later
@@ -13,10 +13,12 @@ The user-facing documentation is [readme.txt](readme.txt), which WordPress.org d
 ## How it works
 
 - `show_admin_bar` returns `false` on the front end for users with `drift_clearview_capability()` (default `edit_posts`). wp-admin is untouched.
-- `wp_footer` prints `#drift-clearview` with two links: `admin_url()` and, on singular views, `get_edit_post_link()`. The Edit link is left out when that returns nothing (no post, or the user can't edit it).
+- `wp_footer` prints `#drift-clearview` with the links from `drift_clearview_get_front_links()`, in the saved order. Built-ins (`dashboard`, `edit`, `new_post`, `customize`, `logout`) each check their own capability or context; Edit uses `get_edit_post_link()` on singular views and is left out when that returns nothing. Custom links are checked against their visibility capability. The list then goes through the `drift_clearview_links` filter and is validated again.
+- Custom link URLs are stored as typed (after `esc_url_raw()`, allowing http, https, mailto and tel) and resolved on output: a scheme is used as is, `/path` goes through `home_url()`, and anything else (`edit.php?…`) goes through `admin_url()`.
+- Up to `DRIFT_CLEARVIEW_MAX_LINKS` (8) links can be in use, counting switched-on built-ins and custom links. The sanitiser enforces it, and the settings script disables Add link and the off built-in toggles at the limit.
 - Icons are hardcoded inline SVGs, not Dashicons, so they render on themes that don't load Dashicons on the front end. Each link has a `title` and visually hidden text using its own class, not `.screen-reader-text`, which many themes don't define.
 - `assets/clearview.css` is enqueued only for users who see the links. The chosen corner and hover colour are added with `wp_add_inline_style()`.
-- Settings → Drift: Clearview uses the Settings API and core's `wp-color-picker`, which takes pasted hex values.
+- Settings → Drift: Clearview uses the Settings API and core's `wp-color-picker`, which takes pasted hex values. The Links list uses `jquery-ui-sortable` and `wp-a11y` (both core). Row order is the DOM order, because PHP keeps array keys in the order they're posted, so rows are never re-indexed.
 
 ## Options
 
@@ -24,8 +26,9 @@ The user-facing documentation is [readme.txt](readme.txt), which WordPress.org d
 |---|---|---|
 | `drift_clearview_placement` | string | `top-right` (default), `top-left`, `bottom-right`, `bottom-left` |
 | `drift_clearview_hover_color` | string | Hex colour, default `#c2410c` |
+| `drift_clearview_links` | array | Ordered list. Built-in: `type`, `id`, `enabled`. Custom: `type`, `label`, `url`, `icon`, `new_tab`, `visibility` (`all`, `editor`, `admin`, `shop`). Not set = Dashboard and Edit Page on, the rest off |
 
-Both are removed in `uninstall.php`, on every site in a multisite network.
+All are removed in `uninstall.php`, on every site in a multisite network.
 
 ## Hooks
 
@@ -33,6 +36,7 @@ Both are removed in `uninstall.php`, on every site in a multisite network.
 |---|---|---|
 | `drift_clearview_capability` | filter | Who loses the toolbar and gets the links. Default `edit_posts` |
 | `drift_clearview_settings_capability` | filter | Who can view and save the settings screen. Default `manage_options` |
+| `drift_clearview_links` | filter | Links about to print for the current user and request. Each: `id`, `label`, `url`, `icon`, `new_tab` |
 | `drift_clearview_settings_after_fields` | action | Extra fields inside the settings form |
 
 Capabilities are read when needed, not at load time, so filters added in a theme's `functions.php` still apply.
@@ -41,6 +45,17 @@ Capabilities are read when needed, not at load time, so filters added in a theme
 // Show the icons to administrators only.
 add_filter( 'drift_clearview_capability', function () {
 	return 'manage_options';
+} );
+
+// Add a link in code.
+add_filter( 'drift_clearview_links', function ( $links ) {
+	$links[] = array(
+		'id'    => 'orders',
+		'label' => 'Orders',
+		'url'   => admin_url( 'edit.php?post_type=shop_order' ),
+		'icon'  => 'cart',
+	);
+	return $links;
 } );
 ```
 

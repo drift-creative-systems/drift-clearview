@@ -55,6 +55,133 @@
 	border-color: #9a3412;
 }
 
+.drift-clearview__card--links h2 {
+	margin: 16px 0 8px;
+}
+
+.drift-clearview-links__count {
+	margin: 8px 0 0;
+	font-weight: 600;
+}
+
+.drift-clearview-links {
+	margin: 12px 0 0;
+}
+
+.drift-clearview-link {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	margin: 0 0 8px;
+	padding: 10px 12px;
+	background: #fff;
+	border: 1px solid var(--drift-clearview-border);
+	border-radius: 6px;
+}
+
+.drift-clearview-link.ui-sortable-helper {
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.drift-clearview-link-placeholder {
+	margin: 0 0 8px;
+	border: 2px dashed var(--drift-clearview-border);
+	border-radius: 6px;
+}
+
+.drift-clearview-link__handle {
+	flex: none;
+	padding-top: 6px;
+	color: #8c8f94;
+	cursor: move;
+}
+
+.drift-clearview-link__move {
+	display: flex;
+	flex: none;
+	flex-direction: column;
+}
+
+.drift-clearview-link__move button {
+	padding: 0;
+	line-height: 1;
+	color: #50575e;
+	background: none;
+	border: 0;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+.drift-clearview-link__move button:hover,
+.drift-clearview-link__move button:focus {
+	color: var(--drift-clearview-accent-strong);
+}
+
+.drift-clearview-link__move button:focus-visible {
+	outline: 2px solid var(--drift-clearview-accent-strong);
+	outline-offset: 1px;
+}
+
+.drift-clearview-link__icon {
+	display: inline-flex;
+	flex: none;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	color: #fff;
+	background: #1d2327;
+	border-radius: 3px;
+}
+
+.drift-clearview-link__icon svg {
+	display: block;
+	width: 18px;
+	height: 18px;
+}
+
+.drift-clearview-link__body {
+	display: block;
+	flex: 1;
+	min-width: 0;
+}
+
+.drift-clearview-link__toggle-label {
+	display: block;
+	margin: 6px 0 2px;
+}
+
+.drift-clearview-link--builtin .description {
+	display: block;
+}
+
+.drift-clearview-link__fields {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 8px 12px;
+}
+
+.drift-clearview-link__field label {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: 600;
+}
+
+.drift-clearview-link__field input[type="text"],
+.drift-clearview-link__field select {
+	width: 100%;
+	max-width: none;
+}
+
+.drift-clearview-link__footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	margin-top: 8px;
+}
+
 @media (max-width: 782px) {
 	.drift-clearview__card {
 		padding: 4px 12px 12px;
