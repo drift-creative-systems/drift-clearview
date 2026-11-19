@@ -3,7 +3,7 @@
  * Plugin Name:       Drift: Clearview
  * Plugin URI:        https://driftcreativesystems.co.uk/apps/clearview/
  * Description:       Hides the WordPress admin toolbar on the front end for logged-in editors and puts small icon links in a corner instead: WP Dashboard, Edit Page, optional shortcuts and your own custom links. Set them up under Settings → Drift: Clearview.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Drift Creative Systems
@@ -36,7 +36,7 @@ if ( defined( 'DRIFT_CLEARVIEW_VERSION' ) ) {
 	return;
 }
 
-define( 'DRIFT_CLEARVIEW_VERSION', '1.1.0' );
+define( 'DRIFT_CLEARVIEW_VERSION', '1.1.1' );
 define( 'DRIFT_CLEARVIEW_URL', plugin_dir_url( __FILE__ ) );
 define( 'DRIFT_CLEARVIEW_OPTION_GROUP', 'drift_clearview_settings' );
 define( 'DRIFT_CLEARVIEW_PAGE_SLUG', 'drift-clearview' );
