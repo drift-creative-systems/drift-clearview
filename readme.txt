@@ -4,7 +4,7 @@ Tags: admin bar, toolbar, hide admin bar, edit link, front end
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,9 @@ Pick a different corner under Settings → Drift: Clearview.
 
 == Changelog ==
 
+= 1.1.1 =
+* The plugin's website link now goes to the Drift: Clearview product page.
+
 = 1.1.0 =
 * New: add your own links, each with a label, URL, icon, new-tab option and who can see it.
 * New: optional built-in New Post, Customise / Site Editor and Log out links.
@@ -108,6 +111,9 @@ Pick a different corner under Settings → Drift: Clearview.
 * First public release: front-end toolbar replaced with WP Dashboard and Edit Page icons, with a choice of corner and hover colour.
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+Updates the plugin's website link. No other changes.
 
 = 1.1.0 =
 Adds custom links and optional New Post, Customise and Log out links. Nothing changes until you switch them on.
