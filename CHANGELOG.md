@@ -2,6 +2,23 @@
 
 All notable changes to this project are documented here. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] - 2026-11-19
+
+### Added
+- Custom links under Settings → Drift: Clearview → Links: label, URL, icon (18 bundled inline SVGs), open in a new tab, and who sees it (everyone who sees the icons, editors, administrators, or shop managers when WooCommerce is active).
+- Optional built-in links: New Post, Customise (Site Editor on block themes) and Log out (returns to the current page).
+- One ordered list for built-in and custom links, reordered by dragging (`jquery-ui-sortable`) or with up/down buttons, with screen reader announcements through `wp-a11y`.
+- Limit of 8 links in use (`DRIFT_CLEARVIEW_MAX_LINKS`), enforced in the sanitiser and on the settings screen.
+- `drift_clearview_links` filter for the links about to be printed.
+- `drift_clearview_links` option, removed on uninstall.
+
+### Changed
+- Settings and readme copy no longer say "two icons".
+- The front-end icon bar wraps on narrow screens instead of overflowing.
+- Each front-end link has a `drift-clearview__link--{id}` class.
+
+Sites updating from 1.0.0 see no change until the links are edited: with nothing saved, only WP Dashboard and Edit Page show.
+
 ## [1.0.0] - 2026-11-02
 
 First release as **Drift: Clearview**, a free WordPress.org plugin by Drift Creative Systems. Based on Bonsai No Toolbar Edit 1.4.2, which carries on separately for Bonsai client sites. There is no data migration between the two.

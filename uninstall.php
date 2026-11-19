@@ -10,7 +10,7 @@ defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 /**
  * Options to remove on every site.
  */
-$drift_clearview_options = array( 'drift_clearview_placement', 'drift_clearview_hover_color' );
+$drift_clearview_options = array( 'drift_clearview_placement', 'drift_clearview_hover_color', 'drift_clearview_links' );
 
 if ( is_multisite() ) {
 	$drift_clearview_site_ids = get_sites(
